@@ -12,21 +12,10 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
-  config.vm.boot_timeout = 300
-  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 8080, host: 8080
+  config.vm.box = "ubuntu/focal64"
+  #"ubuntu/xenial64"
 
-  config.vm.provider "virtualbox" do |v|
-    v.gui = false
-  end
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
-  end
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
-    vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
-  end
+  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 6000, host: 6000
 
   config.vm.provision "shell", inline: <<-SHELL
     # Update and upgrade the server packages.
@@ -35,7 +24,7 @@ Vagrant.configure("2") do |config|
     # Set Ubuntu Language
     sudo locale-gen en_GB.UTF-8
     # Install Python, SQLite and pip
-    sudo apt-get install -y python3-dev sqlite python-pip
+    sudo apt-get install -y python3-dev sqlite python3-pip python-is-python3
     # Upgrade pip to the latest version.
     sudo pip install --upgrade pip
     # Install and configure python virtualenvwrapper.
