@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
   #"ubuntu/xenial64"
 
-  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 6000, host: 6000
+  config.vm.network "forwarded_port", host_ip: "127.0.0.1", guest: 8000, host: 8000
 
   config.vm.provision "shell", inline: <<-SHELL
     # Update and upgrade the server packages.
