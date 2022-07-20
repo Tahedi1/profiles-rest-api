@@ -25,10 +25,11 @@ SECRET_KEY = 'zu@55(g*g-^j#@+g(!2@beyx)+f07%p5=oevh%wpzu=ogssvr4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG',1)))
 
-ALLOWED_HOSTS = ['*']
-#    'http://ec2-3-250-221-58.eu-west-1.compute.amazonaws.com'
-#    '127.0.0.1'
-#]
+ALLOWED_HOSTS = [
+    'http://ec2-*-*-*-*.eu-west-1.compute.amazonaws.com'
+    '127.0.0.1',
+    'localhost'
+    ]
 
 
 # Application definition
@@ -105,24 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGGING = {
-   'version': 1,
-   'disable_existing_loggers': False,
-   'handlers': {
-      'file': {
-         'level': 'DEBUG',
-         'class': 'logging.FileHandler',
-         'filename': '/tmp/debug.log',
-      },
-   },
-   'loggers': {
-      'django': {
-         'handlers': ['file'],
-         'level': 'DEBUG',
-         'propagate': True,
-      },
-   },
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
