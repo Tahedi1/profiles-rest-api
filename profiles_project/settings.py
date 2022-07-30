@@ -28,7 +28,8 @@ DEBUG = bool(int(os.environ.get('DEBUG',1)))
 ALLOWED_HOSTS = [
     'ec2-3-250-221-58.eu-west-1.compute.amazonaws.com',
     '127.0.0.1',
-#    'localhost'
+    'localhost',
+    '*'
     ]
 
 
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'profiles_api',
+
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
